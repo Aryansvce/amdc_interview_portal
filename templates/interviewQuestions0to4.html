@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Python Test</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .custom-header {
+        background: linear-gradient(
+          90deg,
+          #f7b267 0%,
+          #ff6d5a 50%,
+          #b84fa3 100%
+        );
+        height: 64px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        color: #fff;
+      }
+      .timer-circle {
+        min-width: 60px;
+        height: 36px;
+        border-radius: 18px;
+        background-color: rgba(255, 255, 255, 0.13);
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        letter-spacing: 1px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+      }
+      .logo {
+        height: 42px;
+        margin-right: 16px;
+      }
+      .header-title {
+        flex: 1;
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 500;
+      }
+      .user-info {
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-left: 20px;
+      }
+      .quiz-container {
+        max-width: 1000px;
+        margin: 24px auto;
+        background: #fff;
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+      .question {
+        margin-bottom: 20px;
+      }
+      .question p {
+        color: #ff9933;
+        font-weight: bold;
+      }
+      .options label {
+        display: block;
+        margin-bottom: 6px;
+        color: #d25a87;
+        cursor: pointer;
+      }
+      .btn-submit {
+        min-width: 160px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        background: #d25a87;
+        color: #fff;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .btn-submit:hover {
+        background: #c24a75;
+      }
+      .horizontal-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="custom-header">
+      <div id="timer" class="timer-circle">35:00</div>
+      <img
+        src="{{ url_for('static', filename='organisationlogo.png') }}"
+        alt="Logo"
+        class="logo"
+      />
+      <div class="header-title">Arcelormittal Digital Consulting</div>
+      <div class="user-info">Logged in as: {{ full_name or 'Candidate' }}</div>
+    </header>
+
+    <div class="quiz-container">
+      <h2 class="text-center" style="color: #d25a87">Python Test</h2>
+
+      <form id="quizForm" action="{{ url_for('submit_quiz') }}" method="POST">
+        <!-- ====== Q1 .. Q35 (tumhara pura block yahan as-is) ====== -->
+        <!-- ... (your full questions exactly as you pasted) ... -->
+        <!-- Q1 -->
+        <div class="question">
+          <p>
+            Q1. What will be the output?<br />a = [1, 2, 3]<br />b = a<br />b.append(4)<br />print(a)
+          </p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q1" value="A" /> A) [1, 2, 3]</label
+            >
+            <label
+              ><input type="radio" name="q1" value="B" /> B) [1, 2, 3, 4]</label
+            >
+            <label><input type="radio" name="q1" value="C" /> C) Error</label>
+            <label><input type="radio" name="q1" value="D" /> D) [4]</label>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question">
+          <p>Q2. Which of the following is True about Python’s GIL?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q2" value="A" /> A) GIL allows true
+              parallelism in Python threads</label
+            >
+            <label
+              ><input type="radio" name="q2" value="B" /> B) GIL is per-process,
+              not per-interpreter</label
+            >
+            <label
+              ><input type="radio" name="q2" value="C" /> C) GIL prevents
+              multiple native threads from executing Python bytecodes
+              simultaneously</label
+            >
+            <label
+              ><input type="radio" name="q2" value="D" /> D) GIL is removed in
+              Python 3.9</label
+            >
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question">
+          <p>Q3. What’s the output?<br />print(0.1 + 0.2 == 0.3)</p>
+          <div class="options">
+            <label><input type="radio" name="q3" value="A" /> A) True</label>
+            <label><input type="radio" name="q3" value="B" /> B) False</label>
+            <label><input type="radio" name="q3" value="C" /> C) None</label>
+            <label><input type="radio" name="q3" value="D" /> D) Error</label>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question">
+          <p>Q4. What’s the time complexity of "abc" in "x"*10**6?</p>
+          <div class="options">
+            <label><input type="radio" name="q4" value="A" /> A) O(1)</label>
+            <label><input type="radio" name="q4" value="B" /> B) O(n)</label>
+            <label
+              ><input type="radio" name="q4" value="C" /> C) O(log n)</label
+            >
+            <label><input type="radio" name="q4" value="D" /> D) O(n²)</label>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question">
+          <p>Q5. Which collection guarantees insertion order in Python 3.7+?</p>
+          <div class="options">
+            <label><input type="radio" name="q5" value="A" /> A) Set</label>
+            <label><input type="radio" name="q5" value="B" /> B) Dict</label>
+            <label><input type="radio" name="q5" value="C" /> C) List</label>
+            <label><input type="radio" name="q5" value="D" /> D) Tuple</label>
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question">
+          <p>
+            Q6. Which Python module is most efficient for handling large binary
+            data?
+          </p>
+          <div class="options">
+            <label><input type="radio" name="q6" value="A" /> A) pickle</label>
+            <label><input type="radio" name="q6" value="B" /> B) array</label>
+            <label><input type="radio" name="q6" value="C" /> C) struct</label>
+            <label><input type="radio" name="q6" value="D" /> D) marshal</label>
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question">
+          <p>Q7. Which will cause memory leak?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q7" value="A" /> A) Weak
+              references</label
+            >
+            <label
+              ><input type="radio" name="q7" value="B" /> B) Circular references
+              with custom __del__</label
+            >
+            <label
+              ><input type="radio" name="q7" value="C" /> C) Using list
+              comprehension</label
+            >
+            <label
+              ><input type="radio" name="q7" value="D" /> D) Immutable
+              strings</label
+            >
+          </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question">
+          <p>
+            Q8. What is the output?<br />
+            def func(x, y=[]):<br />
+            &nbsp;&nbsp;y.append(x)<br />
+            &nbsp;&nbsp;return y<br />
+            print(func(1))<br />
+            print(func(2))
+          </p>
+          <div class="options">
+            <label><input type="radio" name="q8" value="A" /> A) [1] [2]</label>
+            <label
+              ><input type="radio" name="q8" value="B" /> B) [1] [1, 2]</label
+            >
+            <label
+              ><input type="radio" name="q8" value="C" /> C) [1, 2] [1,
+              2]</label
+            >
+            <label><input type="radio" name="q8" value="D" /> D) Error</label>
+          </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="question">
+          <p>Q9. What does @classmethod do?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q9" value="A" /> A) Makes method
+              accessible without object</label
+            >
+            <label
+              ><input type="radio" name="q9" value="B" /> B) Creates a private
+              method</label
+            >
+            <label
+              ><input type="radio" name="q9" value="C" /> C) Forces
+              inheritance</label
+            >
+            <label><input type="radio" name="q9" value="D" /> D) None</label>
+          </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="question">
+          <p>
+            Q10. What’s the difference between <code>is</code> and
+            <code>==</code> in Python?
+          </p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q10" value="A" /> A) Both check
+              values</label
+            >
+            <label
+              ><input type="radio" name="q10" value="B" /> B) is → identity, ==
+              → equality</label
+            >
+            <label
+              ><input type="radio" name="q10" value="C" /> C) is faster than ==
+              always</label
+            >
+            <label
+              ><input type="radio" name="q10" value="D" /> D) No
+              difference</label
+            >
+          </div>
+        </div>
+
+        <!-- Q11 -->
+        <div class="question">
+          <p>Q11. Which SQL statement gets top 5 salaries?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q11" value="A" /> A) SELECT salary FROM
+              emp LIMIT 5</label
+            >
+            <label
+              ><input type="radio" name="q11" value="B" /> B) SELECT salary FROM
+              emp ORDER BY salary DESC LIMIT 5</label
+            >
+            <label
+              ><input type="radio" name="q11" value="C" /> C) SELECT MAX(salary)
+              FROM emp</label
+            >
+            <label
+              ><input type="radio" name="q11" value="D" /> D) SELECT salary TOP
+              5</label
+            >
+          </div>
+        </div>
+
+        <!-- Q12 -->
+        <div class="question">
+          <p>Q12. Difference between RANK() and DENSE_RANK()?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q12" value="A" /> A) Both same</label
+            >
+            <label
+              ><input type="radio" name="q12" value="B" /> B) RANK skips ranks
+              on ties</label
+            >
+            <label
+              ><input type="radio" name="q12" value="C" /> C) DENSE_RANK skips
+              ranks</label
+            >
+            <label
+              ><input type="radio" name="q12" value="D" /> D) RANK doesn’t allow
+              NULL</label
+            >
+          </div>
+        </div>
+
+        <!-- Q13 -->
+        <div class="question">
+          <p>
+            Q13. What will happen?<br />
+            SELECT COUNT(*) FROM emp WHERE salary > ALL (SELECT salary FROM
+            dept);
+          </p>
+          <div class="options">
+            <label><input type="radio" name="q13" value="A" /> A) Error</label>
+            <label
+              ><input type="radio" name="q13" value="B" /> B) Compares salary
+              with highest dept salary</label
+            >
+            <label
+              ><input type="radio" name="q13" value="C" /> C) Compares salary
+              with lowest salary</label
+            >
+            <label
+              ><input type="radio" name="q13" value="D" /> D) Returns 0
+              always</label
+            >
+          </div>
+        </div>
+
+        <!-- Q14 -->
+        <div class="question">
+          <p>Q14. Which command removes a table structure permanently?</p>
+          <div class="options">
+            <label><input type="radio" name="q14" value="A" /> A) DELETE</label>
+            <label
+              ><input type="radio" name="q14" value="B" /> B) TRUNCATE</label
+            >
+            <label><input type="radio" name="q14" value="C" /> C) DROP</label>
+            <label><input type="radio" name="q14" value="D" /> D) REMOVE</label>
+          </div>
+        </div>
+
+        <!-- Q15 -->
+        <div class="question">
+          <p>Q15. What’s the difference between INNER JOIN and EXISTS?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q15" value="A" /> A) No
+              difference</label
+            >
+            <label
+              ><input type="radio" name="q15" value="B" /> B) EXISTS is faster
+              for correlated subqueries</label
+            >
+            <label
+              ><input type="radio" name="q15" value="C" /> C) INNER JOIN always
+              returns NULLs</label
+            >
+            <label
+              ><input type="radio" name="q15" value="D" /> D) EXISTS can’t be
+              used with WHERE</label
+            >
+          </div>
+        </div>
+
+        <!-- Q16 -->
+        <div class="question">
+          <p>Q16. <code>np.arange(3, 7)</code> returns:</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q16" value="A" /> A) [3, 4, 5, 6,
+              7]</label
+            >
+            <label
+              ><input type="radio" name="q16" value="B" /> B) [3, 4, 5,
+              6]</label
+            >
+            <label
+              ><input type="radio" name="q16" value="C" /> C) [4, 5, 6]</label
+            >
+            <label><input type="radio" name="q16" value="D" /> D) [3, 7]</label>
+          </div>
+        </div>
+
+        <!-- Q17 -->
+        <div class="question">
+          <p>Q17. Which function stacks arrays vertically?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q17" value="A" /> A) np.vstack()</label
+            >
+            <label
+              ><input type="radio" name="q17" value="B" /> B) np.hstack()</label
+            >
+            <label
+              ><input type="radio" name="q17" value="C" /> C) np.concat()</label
+            >
+            <label
+              ><input type="radio" name="q17" value="D" /> D) np.append()</label
+            >
+          </div>
+        </div>
+
+        <!-- Q18 -->
+        <div class="question">
+          <p>Q18. Which method gives first 5 rows?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q18" value="A" /> A) df.head()</label
+            >
+            <label
+              ><input type="radio" name="q18" value="B" /> B) df.tail()</label
+            >
+            <label
+              ><input type="radio" name="q18" value="C" /> C) df.first()</label
+            >
+            <label
+              ><input type="radio" name="q18" value="D" /> D) df.sample()</label
+            >
+          </div>
+        </div>
+
+        <!-- Q19 -->
+        <div class="question">
+          <p>
+            Q19.
+            <code>df.groupby("dept")["salary"].transform("mean")</code> returns:
+          </p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q19" value="A" /> A) Mean salary per
+              dept, aligned with index</label
+            >
+            <label
+              ><input type="radio" name="q19" value="B" /> B) Single scalar
+              value</label
+            >
+            <label
+              ><input type="radio" name="q19" value="C" /> C) Only last group
+              mean</label
+            >
+            <label><input type="radio" name="q19" value="D" /> D) Error</label>
+          </div>
+        </div>
+
+        <!-- Q20 -->
+        <div class="question">
+          <p>Q20. Which joins are supported in Pandas merge?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q20" value="A" /> A) inner, outer,
+              left, right</label
+            >
+            <label
+              ><input type="radio" name="q20" value="B" /> B) only inner</label
+            >
+            <label
+              ><input type="radio" name="q20" value="C" /> C) only
+              left-right</label
+            >
+            <label
+              ><input type="radio" name="q20" value="D" /> D) only outer</label
+            >
+          </div>
+        </div>
+
+        <!-- Q21 -->
+        <div class="question">
+          <p>Q21. What does <code>df.loc[2:5]</code> return?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q21" value="A" /> A) Rows 2,3,4</label
+            >
+            <label
+              ><input type="radio" name="q21" value="B" /> B) Rows
+              2,3,4,5</label
+            >
+            <label><input type="radio" name="q21" value="C" /> C) Error</label>
+            <label
+              ><input type="radio" name="q21" value="D" /> D) Only row 2</label
+            >
+          </div>
+        </div>
+
+        <!-- Q22 -->
+        <div class="question">
+          <p>Q22. <code>df.isnull().sum()</code> does?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q22" value="A" /> A) Removes
+              nulls</label
+            >
+            <label
+              ><input type="radio" name="q22" value="B" /> B) Counts null per
+              column</label
+            >
+            <label
+              ><input type="radio" name="q22" value="C" /> C) Counts null per
+              row</label
+            >
+            <label
+              ><input type="radio" name="q22" value="D" /> D) Fills nulls</label
+            >
+          </div>
+        </div>
+
+        <!-- Q23 -->
+        <div class="question">
+          <p>Q23. Which command checks commit history?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q23" value="A" /> A) git log</label
+            >
+            <label
+              ><input type="radio" name="q23" value="B" /> B) git show</label
+            >
+            <label
+              ><input type="radio" name="q23" value="C" /> C) git status</label
+            >
+            <label
+              ><input type="radio" name="q23" value="D" /> D) git branch</label
+            >
+          </div>
+        </div>
+
+        <!-- Q24 -->
+        <div class="question">
+          <p>
+            Q24. Which command removes last commit but keeps changes staged?
+          </p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q24" value="A" /> A) git reset --hard
+              HEAD~1</label
+            >
+            <label
+              ><input type="radio" name="q24" value="B" /> B) git reset --soft
+              HEAD~1</label
+            >
+            <label
+              ><input type="radio" name="q24" value="C" /> C) git revert
+              HEAD</label
+            >
+            <label
+              ><input type="radio" name="q24" value="D" /> D) git stash</label
+            >
+          </div>
+        </div>
+
+        <!-- Q25 -->
+        <div class="question">
+          <p>Q25. FastAPI uses which Python feature for request validation?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q25" value="A" /> A) Abstract
+              classes</label
+            >
+            <label
+              ><input type="radio" name="q25" value="B" /> B) Pydantic
+              models</label
+            >
+            <label
+              ><input type="radio" name="q25" value="C" /> C) Dataclasses
+              only</label
+            >
+            <label
+              ><input type="radio" name="q25" value="D" /> D) Marshmallow</label
+            >
+          </div>
+        </div>
+
+        <!-- Q26 -->
+        <div class="question">
+          <p>Q26. How do you run FastAPI with production performance?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q26" value="A" /> A) python
+              main.py</label
+            >
+            <label
+              ><input type="radio" name="q26" value="B" /> B) uvicorn main:app
+              --reload</label
+            >
+            <label
+              ><input type="radio" name="q26" value="C" /> C) uvicorn main:app
+              --workers 4</label
+            >
+            <label
+              ><input type="radio" name="q26" value="D" /> D) fastapi run</label
+            >
+          </div>
+        </div>
+
+        <!-- Q27 -->
+        <div class="question">
+          <p>Q27. Django ORM: <code>User.objects.all()</code> returns?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q27" value="A" /> A) Raw SQL</label
+            >
+            <label
+              ><input type="radio" name="q27" value="B" /> B) QuerySet</label
+            >
+            <label
+              ><input type="radio" name="q27" value="C" /> C) Dictionary</label
+            >
+            <label><input type="radio" name="q27" value="D" /> D) List</label>
+          </div>
+        </div>
+
+        <!-- Q28 -->
+        <div class="question">
+          <p>Q28. Which caching backend is fastest for Django in production?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q28" value="A" /> A) Database
+              cache</label
+            >
+            <label
+              ><input type="radio" name="q28" value="B" /> B) File-based
+              cache</label
+            >
+            <label
+              ><input type="radio" name="q28" value="C" /> C) Memcached</label
+            >
+            <label
+              ><input type="radio" name="q28" value="D" /> D) Local memory
+              cache</label
+            >
+          </div>
+        </div>
+
+        <!-- Q29 -->
+        <div class="question">
+          <p>Q29. Flask uses which WSGI server by default in development?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q29" value="A" /> A) Gunicorn</label
+            >
+            <label><input type="radio" name="q29" value="B" /> B) uWSGI</label>
+            <label
+              ><input type="radio" name="q29" value="C" /> C) Werkzeug</label
+            >
+            <label><input type="radio" name="q29" value="D" /> D) Daphne</label>
+          </div>
+        </div>
+
+        <!-- Q30 -->
+        <div class="question">
+          <p>Q30. Flask Blueprints are used for?</p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q30" value="A" /> A) API rate
+              limiting</label
+            >
+            <label
+              ><input type="radio" name="q30" value="B" /> B) Modular app
+              structure</label
+            >
+            <label
+              ><input type="radio" name="q30" value="C" /> C) Logging</label
+            >
+            <label
+              ><input type="radio" name="q30" value="D" /> D) ORM
+              handling</label
+            >
+          </div>
+        </div>
+
+        <!-- Q31 -->
+        <div class="question">
+          <p>Q31. What is the output of <code>print(2 ** 3 ** 2)</code>?</p>
+          <div class="options">
+            <label><input type="radio" name="q31" value="A" /> A) 512</label>
+            <label><input type="radio" name="q31" value="B" /> B) 64</label>
+            <label><input type="radio" name="q31" value="C" /> C) 8</label>
+            <label><input type="radio" name="q31" value="D" /> D) Error</label>
+          </div>
+        </div>
+
+        <!-- Q32 -->
+        <div class="question">
+          <p>
+            Q32.<br />
+            x = [i for i in range(3)]<br />
+            print([x]*3)<br />
+            x[0] = 99<br />
+            print([x]*3)
+          </p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q32" value="A" /> A)
+              [[0,1,2],[0,1,2],[0,1,2]] and [[99,1,2],[0,1,2],[0,1,2]]</label
+            >
+            <label
+              ><input type="radio" name="q32" value="B" /> B)
+              [[0,1,2],[0,1,2],[0,1,2]] and [[99,1,2],[99,1,2],[99,1,2]]</label
+            >
+            <label><input type="radio" name="q32" value="C" /> C) Error</label>
+            <label
+              ><input type="radio" name="q32" value="D" /> D) Different objects
+              created</label
+            >
+          </div>
+        </div>
+
+        <!-- Q33 -->
+        <div class="question">
+          <p>
+            Q33. <code>def f(a, b, /, c, d, *, e, f):</code> — What’s
+            <code>/</code> and <code>*</code> ?
+          </p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q33" value="A" /> A) Nothing</label
+            >
+            <label
+              ><input type="radio" name="q33" value="B" /> B) / →
+              positional-only, * → keyword-only</label
+            >
+            <label
+              ><input type="radio" name="q33" value="C" /> C) / → keyword-only,
+              * → positional-only</label
+            >
+            <label
+              ><input type="radio" name="q33" value="D" /> D) Syntax
+              sugar</label
+            >
+          </div>
+        </div>
+
+        <!-- Q34 -->
+        <div class="question">
+          <p>
+            Q34.<br />
+            def foo(a, b=[]):<br />
+            &nbsp;&nbsp;b.append(a)<br />
+            &nbsp;&nbsp;return b<br />
+            print(foo(1))<br />
+            print(foo(2))
+          </p>
+          <div class="options">
+            <label
+              ><input type="radio" name="q34" value="A" /> A) [1], [2]</label
+            >
+            <label
+              ><input type="radio" name="q34" value="B" /> B) [1], [1,2]</label
+            >
+            <label
+              ><input type="radio" name="q34" value="C" /> C) [1,2],
+              [1,2]</label
+            >
+            <label><input type="radio" name="q34" value="D" /> D) Error</label>
+          </div>
+        </div>
+
+        <!-- Q35 -->
+        <div class="question">
+          <p>
+            Q35. def outer():<br />
+            &nbsp;&nbsp;x = 5<br />
+            &nbsp;&nbsp;def inner():<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;nonlocal x<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;x += 1<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;return x<br />
+            &nbsp;&nbsp;return inner<br />
+            f = outer()<br />
+            print(f(), f())
+          </p>
+          <div class="options">
+            <label><input type="radio" name="q35" value="A" /> A) 6, 6</label>
+            <label><input type="radio" name="q35" value="B" /> B) 6, 7</label>
+            <label><input type="radio" name="q35" value="C" /> C) Error</label>
+            <label><input type="radio" name="q35" value="D" /> D) 5, 6</label>
+          </div>
+        </div>
+
+        <div class="horizontal-buttons">
+          <button type="submit" class="btn-submit">Submit Test Answers</button>
+          <a href="{{ url_for('user_details') }}" class="btn-submit">Home</a>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      (function () {
+        var totalSeconds = 35 * 60,
+          display = document.getElementById("timer"),
+          form = document.getElementById("quizForm");
+
+        function formatTime(secs) {
+          var m = Math.floor(secs / 60),
+            s = secs % 60;
+          return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+        }
+
+        function tick() {
+          display.textContent = formatTime(totalSeconds);
+          if (totalSeconds <= 0) {
+            if (form)
+              form.querySelector('button[type="submit"]').disabled = true;
+            alert("⏰ Time is over. The test is now locked.");
+            window.location.href = "{{ url_for('test_complete') }}";
+            clearInterval(timerId);
+            return;
+          }
+          totalSeconds--;
+        }
+
+        tick();
+        var timerId = setInterval(tick, 1000);
+      })();
+    </script>
+  </body>
+</html>

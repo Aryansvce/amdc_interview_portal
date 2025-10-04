@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz Question</title>
+  </head>
+  <body>
+    <h3>Question: What is the correct option?</h3>
+    <form id="quizForm">
+      <input type="radio" name="answer" value="a" /> a) Option A<br />
+      <input type="radio" name="answer" value="b" /> b) Option B<br />
+      <input type="radio" name="answer" value="c" /> c) Option C<br />
+      <input type="radio" name="answer" value="d" /> d) Option D<br />
+      <button type="button" onclick="checkAnswer()">Submit</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+      function checkAnswer() {
+        const correctAnswer = "c";
+        const form = document.forms["quizForm"];
+        const selected = form.answer.value;
+        const resultDiv = document.getElementById("result");
+
+        if (!selected) {
+          resultDiv.textContent = "Please select an answer.";
+          return;
+        }
+
+        if (selected === correctAnswer) {
+          resultDiv.textContent = "Correct!";
+        } else {
+          resultDiv.textContent =
+            "Wrong answer. The correct option is " +
+            correctAnswer.toUpperCase() +
+            ".";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test Complete</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        margin: 0;
+        padding: 40px;
+      }
+      .card {
+        max-width: 800px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      h2 {
+        color: #d25a87;
+        margin-top: 0;
+      }
+      a.btn {
+        display: inline-block;
+        margin-top: 16px;
+        padding: 10px 20px;
+        border-radius: 8px;
+        background: #d25a87;
+        color: #fff;
+        text-decoration: none;
+      }
+      a.btn:hover {
+        background: #c24a75;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      {% if finished %}
+      <h2>🎉 Thanks, {{ full_name or 'Candidate' }}!</h2>
+      <p>Your answers have been submitted.</p>
+      {% else %}
+      <h2>⏰ Time is done</h2>
+      <p>
+        {{ full_name or 'Candidate' }}, you can not take the test now. Thanks
+        for taking part in the interview.
+      </p>
+      {% endif %}
+      <a href="{{ url_for('user_details') }}" class="btn">Go to Home</a>
+    </div>
+  </body>
+</html>
